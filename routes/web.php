@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('clientes.listar');
 });
+
+Route::get('/form', 'ClienteController@clienteform');
+Route::post('/save', 'ClienteController@save')->name('save');
