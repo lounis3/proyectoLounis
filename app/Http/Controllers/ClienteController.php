@@ -9,6 +9,14 @@ use Illuminate\Validation\ValidationException;
 
 class ClienteController extends Controller
 {
+
+    //Listado de clientes
+
+    public function list() {
+        $data['users'] = Cliente::paginate(3);
+
+        return view('clientes.list', $data);
+    }
     // Formulario cliente
     public function clienteform() {
         return view('clientes.clienteform');
@@ -31,14 +39,17 @@ class ClienteController extends Controller
            'pais'=> 'required|string|max:200',
            'telefono'=> 'required|string|max:9'
         ]);
-        $clientData = $request()->except('_token');
+        $clientData = $request->except('_token');
         Cliente::created($clientData);
 
         return back()->with('clienteGuardado', 'Cliente Guardado');
     }
 
-    public function update(Request $request)
-    {
-        //
+    public function delete($dni) {
+        Cliente::destroy($dni);
+
+        return back()->with('clienteEliminado', 'Cliente Eliminado');
     }
+
+
 }

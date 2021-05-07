@@ -14,9 +14,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('clientes.listar');
+Route::get('/', 'ClienteController@list');
+
+Route::get('form/', 'ClienteController@clienteform');
+Route::post('save/', 'ClienteController@save')->name('save');
+Route::delete('/delete/{dni}', 'ClienteController@delete')->name('delete');
+Route::get('/', function (Request $request) {
+    //
 });
 
-Route::get('/form', 'ClienteController@clienteform');
-Route::post('/save', 'ClienteController@save')->name('save');
+

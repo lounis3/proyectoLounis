@@ -24,18 +24,20 @@
     </ul>
 
 @endif
+<class>
+    <form action="{{ route('save') }}" method="post">
+        @csrf
+        <header>AGREGAR CLIENTE</header>
+        <label>DNI: <input type="text" name="dni" placeholder="Introduzca su DNI"
+                           pattern="[0-9]{8}[A-Za-z]{1}"></label><br />
+        <label>Nombre: <input type="text" name="nombre"></label><br />
+        <label>Apellidos: <input type="text" name="apellidos"></label><br />
+        <label>Dirección: <input type="text" name="direccion"></label><br />
+        <label>País: <input type="text" name="pais"></label><br />
+        <label>Teléfono: <input type="tel" name="telefono"></label><br />
+        <input type="submit" name="submit" value="Enviar">
+    </form>
+</class>
 
-<form action="{{ route('save') }}" method="post">
-    @csrf
-    <header>AGREGAR CLIENTE</header>
-    <label>DNI: <input type="text" name="dni" placeholder="Introduzca su DNI"
-                       pattern="[0-9]{8}[A-Za-z]{1}"></label>
-    <label>Nombre: <input type="text" name="nombre"></label>
-    <label>Apellidos: <input type="text" name="apellidos"></label>
-    <label>Dirección: <input type="text" name="direccion"></label>
-    <label>País: <input type="text" name="pais"></label>
-    <label>Teléfono: <input type="tel" name="telefono"></label>
-    <input type="submit" name="submit" value="Enviar">
-</form>
 </body>
 </html>
